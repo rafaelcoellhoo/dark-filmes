@@ -23,6 +23,11 @@ export default function Cadastrar() {
 
   async function handleSubmit(event) {
     event.preventDefault();
+
+    if(!titulo || !!diretor || !genero ||!nota ||!sinopse ||!banner||!ano){
+      toast.error("Preencha todos os campos!")
+      return;
+    }
     
     try {
       await instance.post("/api/movies", {
